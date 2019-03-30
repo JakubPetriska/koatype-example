@@ -12,10 +12,10 @@ apiRouter.post('/leads', async (ctx) => {
     propertyType,
     fullName,
     email,
-    phoneNumber
-  } = ctx.request.body
+    phoneNumber,
+  } = ctx.request.body;
 
-  const leadsCollection = await getCollection('leads')
+  const leadsCollection = await getCollection('leads');
   await leadsCollection.insertOne({
     type,
     district,
@@ -23,30 +23,29 @@ apiRouter.post('/leads', async (ctx) => {
     fullName,
     email,
     phoneNumber,
-    createdAt: new Date()
-  })
+    createdAt: new Date(),
+  });
 
   ctx.status = 200;
-})
+});
 
 apiRouter.get('/leads', async (ctx) => {
   const {
     type,
-    createdAt
-  } = ctx.query
+    createdAt,
+  } = ctx.query;
 
-  const query = {}
+  const query = {};
   if (type) {
-    query.type = type
+    query.type = type;
   }
   if (createdAt) {
     query.createdAt = {
-      $gt: moment(createdAt).toDate()
-    }
+      $gt: moment(createdAt).toDate(),
+    };
   }
-  const leadsCollection = await getCollection('leads')
+  const leadsCollection = await getCollection('leads');
   const leads = await leadsCollection.find(query)
-    .toArray()
+    .toArray();
   ctx.body = leads;
-})
-
+});

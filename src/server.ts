@@ -1,13 +1,13 @@
 import Koa from 'koa';
 import koaBodyParser from 'koa-bodyparser';
 
-import { PORT } from './config';
 import { apiRouter } from './api';
+import { PORT } from './config';
 
 const app = new Koa();
 app.use(koaBodyParser({
-  enableTypes: ['json']
-}))
+  enableTypes: ['json'],
+}));
 
 app.use(apiRouter.routes());
 app.use(apiRouter.allowedMethods());
