@@ -4,6 +4,8 @@
   "main": "src/server.ts",
   "license": "UNLICENSED",
   "dependencies": {
+    "@tepez/joi-phone-number-extensions": "^0.1.0",
+    "joi": "^14.3.1",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
     "koa-router": "^7.4.0",
@@ -17,6 +19,7 @@
     "lintFix": "tslint --fix --project ./"
   },
   "devDependencies": {
+    "@types/joi": "^14.3.2",
     "@types/koa": "^2.0.48",
     "@types/koa-bodyparser": "^4.2.2",
     "@types/koa-router": "^7.0.40",
